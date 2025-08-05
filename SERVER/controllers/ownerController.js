@@ -2,8 +2,9 @@ import { format } from "path";
 import imagekit from "../config/imageKit";
 import User from "../models/user";
 import fs from "fs";
-import scooter from "../models/scooter";
-import bike from "../models/bike";
+import Vehicle from "../models/vehicle";
+
+
 
 
 export const changeRoleToOwner = async (req, res)=>{
@@ -18,7 +19,7 @@ export const changeRoleToOwner = async (req, res)=>{
 }
 
 
-//API FOR LISTING
+//API FOR adding owner cars
 
 export const addvehicle = async (req,res)=>{
     try{
@@ -46,18 +47,28 @@ export const addvehicle = async (req,res)=>{
         });
 
         const image = optimizedimageURL;
-        if (await scooter.create({...scooter, owner: _id, image}))
-            { 
-                res.json({success: true, message: "Scooter added"})
-            }
-        else{
-            await bike.create({...bike, owner: _id, image})
-            res.json({success: true, message: "Bike added"})
-        }
+        await Vehicle.create({...Vehicle, owner: _id, image})
+            res.json({success: true, message: "Vehicle added"})
         
     } catch(error){
         console.log(error.message);
         res.json({success: false, message: error.message})
     }
 }
-         
+        
+
+//API for Listing owner cars
+
+export const getOwnercars = async(req,res) =>{
+    try {
+        const {_id}= req.user;
+        const vehicle = await Vehicle.find({owner: _id})
+        res.json({success: true, vehicle})
+
+    } catch (error) {
+        console.log(error.message);
+        res.json({success: false, message:error.message})
+    }
+}
+
+//API 
