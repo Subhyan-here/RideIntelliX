@@ -15,6 +15,6 @@ const scooterSchema = new mongoose.Schema({
     isAvaillable: { type:Boolean, default: true},
 },{timestamps: true})
 
-const scooter = mongoose.model('Bike', scooterSchema);
+const scooter = mongoose.model('Scooter', scooterSchema);
 
 export default scooter

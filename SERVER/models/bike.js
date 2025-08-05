@@ -8,13 +8,12 @@ const bikeSchema = new mongoose.Schema({
     image: {type:String, required: true},
     year: {type: Number, required: true},
     catagory: {type:String, required: true},
-    vehicle_type: { type:String, required: true},
     priceperday: { type:Number, required: true},
     location: { type: String, required: true},
     description: { type:String, required: true},
     isAvaillable: { type:Boolean, default: true},
 },{timestamps: true})
 
-const bike = mongoose.model('Bike', bikeSchema);
+const bike = mongoose.model('Vehicle', bikeSchema);
 
 export default bike
