@@ -3,9 +3,10 @@ import imagekit from "../config/imageKit";
 import User from "../models/user";
 import fs from "fs";
 import Vehicle from "../models/vehicle";
+import Booking from "../models/booking";
 
 
-
+//API FOR owner role
 
 export const changeRoleToOwner = async (req, res)=>{
     try {
@@ -19,7 +20,7 @@ export const changeRoleToOwner = async (req, res)=>{
 }
 
 
-//API FOR adding owner cars
+//API FOR adding owner vehicles
 
 export const addvehicle = async (req,res)=>{
     try{
@@ -57,9 +58,9 @@ export const addvehicle = async (req,res)=>{
 }
         
 
-//API for Listing owner cars
+//API for Listing owner vehicles
 
-export const getOwnercars = async(req,res) =>{
+export const getOwnerVehicles = async(req,res) =>{
     try {
         const {_id}= req.user;
         const vehicle = await Vehicle.find({owner: _id})
@@ -71,4 +72,91 @@ export const getOwnercars = async(req,res) =>{
     }
 }
 
-//API 
+//API FOR togle vehicle availability
+
+export const toggleVehicleAvailability = async (req,res)=>{
+    try {
+        const {_id}= req.user;
+        const {vehicleId} = req.body
+        const vehicle = await Vehicle.findById(vehicleId)
+        
+        
+        //cheching is vechicle belong to user 
+        if(vehicle.owner.toString() !== _id.toString()){
+            return res.json({success: false, message: "Unauthorized"});
+        }
+
+        vehicle.isAvaillable = !vehicle.isAvaillable;
+        await vehicle.save()
+
+        res.json({success: true, message: "Availability Toggled"})
+    } catch (error) {
+        console.log(error.message);
+        res.json({success: false, message:error.message})
+    }
+}
+
+//API FOR delete a vehicle
+
+export const deleteVehicle = async (req,res)=>{
+    try {
+        const {_id}= req.user;
+        const {vehicleId} = req.body
+        const vehicle = await Vehicle.findById(vehicleId)
+        
+        
+        //cheching is vechicle belong to user 
+        if(vehicle.owner.toString() !== _id.toString()){
+            return res.json({success: false, message: "Unauthorized"});
+        }
+
+        vehicle.owner = null;
+        vehicle.isAvaillable = false;
+
+        await vehicle.save()
+
+        res.json({success: true, message: "Vehicle Removed"})
+    } catch (error) {
+        console.log(error.message);
+        res.json({success: false, message:error.message})
+    }
+}
+
+//API TO get dashboard data
+export const dashboardData = async (req,res)=>{
+    try {
+        const {_id, role }= req.user;
+        
+        if(role !== 'owner'){
+            return res.json({success: false, message: "Unauthorized"});
+        }
+        const vehicle = await Vehicle.find({owner: _id})
+        const bookings = await Booking.find({owner: _id}).populate('vehicle').sort({ createdAt : -1});
+
+        //function for pending booking
+        const pendingBookings = await Booking.find({owner:_id, status: "Pending"})
+
+        //function for confirmed booking
+        const confirmedBookings = await Booking.find({owner:_id, status: "Confirmed"})
+
+
+        //Calculate monthly revenue from confirmed booking
+
+        const monthlyRevenue = bookings.slice().filter(booking => booking.status === 'confirmed').reduce((acc, booking)=> acc + booking.price, 0)
+
+        const dashboardData = {
+            totalvehicles: vehicle.length,
+            totalbookings: bookings.length,
+            pendingBookings: pendingBookings.length,
+            confirmedBookings: confirmedBookings.length,
+            recentBookings: bookings.slice(0,3),
+            monthlyRevenue
+        }
+
+        res.json({success: true, dashboardData});
+
+    } catch (error) {
+        console.log(error.message);
+        res.json({success: false, message:error.message})
+    }
+}

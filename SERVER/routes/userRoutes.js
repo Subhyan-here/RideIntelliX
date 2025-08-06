@@ -1,12 +1,10 @@
-const express = require('express');
-const router = express.Router();
+import express from 'express';
+import { createUser, deleteUser, getallUser, updateUser } from '../controllers/userController';
 
-const {
-    getallUser,
-    createUser,
-    updateUser,
-    deleteUser
-} = require('../controllers/userController');
+
+
+const userRouter = express.Router();
+
 
 // const multer = require('multer');
 
@@ -22,9 +20,9 @@ const {
 
 // const upload = multer({storage:storage});
 
-router.get('/',getallUser);
-router.post('/',createUser);
+router.get('/', getallUser);
+router.post('/', createUser);
 router.put('/:id', updateUser);
 router.delete('/:id', deleteUser);
 
-module.exports = router;
+export default userRouter;

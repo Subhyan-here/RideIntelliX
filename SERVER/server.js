@@ -1,11 +1,13 @@
 //importing all dependencies
 
-const express = require("express");
-const dotenv = require("dotenv");
-const cors = require("cors");
-const connectdb = require('./config/db');
-const riderRoutes = require('./routes/riderRoutes');
-const userRoutes = require('./routes/userRoutes');
+import express from "express"
+import dotenv from "dotenv"
+import cors from "cors"
+import connectdb from './config/db.js';
+import riderRoutes from './routes/riderRoutes.js';
+import userRoutes from './routes/userRoutes.js';
+import ownerRouter from './routes/ownerRoute.js';
+import bookingRouter from './routes/bookingRoutes.js';
 
 //calling all dependencies
 
@@ -17,6 +19,8 @@ app.use('/uploads',express.static('uploads'));
 connectdb();
 app.use('/api/rider',riderRoutes);
 app.use('/api/users',userRoutes);
+app.use('/api/owner', ownerRouter);
+app.use('/api/bookings', bookingRouter);
 
 
 //API call
