@@ -4,10 +4,16 @@ import user from '../models/user';
 
 //create
 export const createUser = async(req,res)=>{
+    try {
     const {name,email,password} = req.body;
     //const image = req.file ? req.file.filename : null;
     const newdata = await user.create({name,email,password});
     res.status(201).json(newdata);
+
+    } catch (error) {
+        console.log(error.message);
+        res.json({success: false, message: error.message})
+    }
 }
 
 //view all data
