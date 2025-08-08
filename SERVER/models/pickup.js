@@ -1,8 +1,10 @@
-const mongoose = require('mongoose');
+import mongoose from "mongoose";
 
 const pickupschema = new mongoose.Schema({
     name:{type:String,required:true},
-    location:{type:String,required:true},
+    location:{type:String,required:true}
 });
 
-module.exports = mongoose.model('pickup',pickupschema);
+const Pickup = mongoose.model('Pockup', pickupschema)
+
+export default Pickup
