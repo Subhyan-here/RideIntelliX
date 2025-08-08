@@ -1,4 +1,4 @@
-import user from '../models/user';
+import user from '../models/user.js';
 
 
 //API to create user

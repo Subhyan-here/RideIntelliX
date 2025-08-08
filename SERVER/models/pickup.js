@@ -5,6 +5,6 @@ const pickupschema = new mongoose.Schema({
     location:{type:String,required:true}
 });
 
-const Pickup = mongoose.model('Pockup', pickupschema)
+const Pickup = mongoose.model('Pickup', pickupschema)
 
 export default Pickup

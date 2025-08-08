@@ -1,30 +1,29 @@
-const express = require('express');
-const router = express.Router();
+import express from 'express';
+import picture from '../middleware/upload.js';
+import authMiddleware from '../middleware/authMiddleware.js';
+import { createRider, deleteRider, getallRider, updateRider } from '../controllers/riderController.js';
 
-const {
-    getallRider,
-    createRider,
-    updateRider,
-    deleteRider
-} = require('../controllers/riderController');
 
-const multer = require('multer');
+const userRouter = express.Router();
+
+
+// const multer = require('multer');
 
 //image upload
-const storage = multer.diskStorage({
-    destination:function(req,file,cb) {
-        cb(null, 'uploads/');
-    },
-    filename:function(req,file,cb) {
-        cb(null,Date.now()+ path.extname(file.originalname));
-    },
-});
+// const storage = multer.diskStorage({
+//     destination:function(req,file,cb) {
+//         cb(null, 'uploads/');
+//     },
+//     filename:function(req,file,cb) {
+//         cb(null,Date.now()+ path.extname(file.originalname));
+//     },
+// });
 
-const upload = multer({storage:storage});
+// const upload = multer({storage:storage});
 
-router.get('/',getallRider);
-router.post('/',upload.single('image') ,createRider);
-router.put('/:id', updateRider);
-router.delete('/:id', deleteRider);
+userRouter.get('/', authMiddleware, createRider);
+userRouter.post('/create-user', picture.single("image"), authMiddleware, getallRider);
+userRouter.put('/:id', authMiddleware, updateRider);
+userRouter.delete('/:id', authMiddleware, deleteRider);
 
-module.exports = router;
+export default userRouter;

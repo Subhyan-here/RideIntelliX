@@ -1,17 +1,17 @@
 import express from "express";
-import {protect} from "../middleware/authMiddleware";
-import { addvehicle, changeRoleToOwner, deleteVehicle, getOwnerVehicles, toggleVehicleAvailability } from "../controllers/ownerController.";
-import upload from "../middleware/multer";
-import { dashboardData, updateUserImage } from "../controllers/ownerController";
+import authMiddleware from "../middleware/authMiddleware.js";
+import { addvehicle, changeRoleToOwner, deleteVehicle, getOwnerVehicles, toggleVehicleAvailability } from "../controllers/ownerController.js";
+import picture from "../middleware/upload.js";
+import { dashboardData, updateUserImage } from "../controllers/ownerController.js";
 
 const ownerRouter = express.Router();
 
-ownerRouter.post("/change-role", protect, changeRoleToOwner )
-ownerRouter.post("/add-vehicle", upload.single("image"),  protect, addvehicle)
-ownerRouter.post("/vehicles", protect, getOwnerVehicles)
-ownerRouter.get("/toggle-vehicle", protect, toggleVehicleAvailability)
-ownerRouter.post("/delete-vehicle", protect, deleteVehicle)
-ownerRouter.get('/dashboard', protect, dashboardData)
-ownerRouter.post('/update-image', upload.single("image"), protect, updateUserImage)
+ownerRouter.post("/change-role", changeRoleToOwner )
+ownerRouter.post("/add-vehicle", picture.single("image"),  authMiddleware, addvehicle)
+ownerRouter.post("/vehicles", authMiddleware, getOwnerVehicles)
+ownerRouter.get("/toggle-vehicle", authMiddleware, toggleVehicleAvailability)
+ownerRouter.post("/delete-vehicle", authMiddleware, deleteVehicle)
+ownerRouter.get('/dashboard', authMiddleware, dashboardData)
+ownerRouter.post('/update-image', picture.single("image"), authMiddleware, updateUserImage)
 
 export default ownerRouter;

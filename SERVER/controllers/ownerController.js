@@ -1,9 +1,9 @@
 import { format } from "path";
-import imagekit from "../config/imageKit";
-import User from "../models/user";
+import imagekit from "../config/imageKit.js";
+import User from "../models/user.js";
 import fs from "fs";
-import Vehicle from "../models/vehicle";
-import Booking from "../models/booking";
+import Vehicle from "../models/vehicle.js";
+import Booking from "../models/booking.js";
 
 
 //API FOR owner role

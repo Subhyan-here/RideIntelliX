@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import mongoose from "mongoose";
 
 const riderschema = new mongoose.Schema({
     name:{type:String,required:true},
@@ -8,4 +8,6 @@ const riderschema = new mongoose.Schema({
     image:{type:String}
 });
 
-module.exports = mongoose.model('Rider',riderschema);
+const rider = mongoose.model('Rider',riderschema);
+
+export default rider;
