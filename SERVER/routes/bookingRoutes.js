@@ -1,13 +1,13 @@
 import express from "express";
-import { changeBookingStatus, checkAvailabilityofVehicle, createBooking, getOwnerBookings, getUserBookings } from "../controllers/bookingController";
-import { protect } from "../middleware/authMiddleware";
+import { changeBookingStatus, checkAvailabilityofVehicle, createBooking, getOwnerBookings, getUserBookings } from "../controllers/bookingController.js";
+import authMiddleware from "../middleware/authMiddleware.js";
 
 const bookingRouter = express.Router();
 
 bookingRouter.post('/check-availability', checkAvailabilityofVehicle)
-bookingRouter.post('/create', protect, createBooking)
-bookingRouter.get('/user', protect, getUserBookings)
-bookingRouter.get('/owner', protect, getOwnerBookings)
-bookingRouter.post('/change-status', protect, changeBookingStatus)
+bookingRouter.post('/create', authMiddleware, createBooking)
+bookingRouter.get('/user', authMiddleware, getUserBookings)
+bookingRouter.get('/owner', authMiddleware, getOwnerBookings)
+bookingRouter.post('/change-status', authMiddleware, changeBookingStatus)
 
 export default bookingRouter;

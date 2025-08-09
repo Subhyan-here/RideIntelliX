@@ -1,5 +1,5 @@
-import Booking from "../models/booking"
-import Vehicle from "../models/vehicle";
+import Booking from "../models/booking.js"
+import Vehicle from "../models/vehicle.js";
 
 
 //Function to check availability of vehicles for a given Date
