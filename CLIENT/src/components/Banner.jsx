@@ -7,7 +7,7 @@ const Banner = () => {
      
       <div>
         <h2>Do you own a luxury car?</h2>
-        <p></p>
+        <p>Wnt u iivv</p>
       </div>
         <img src={assets.banner_vehicle_image} alt="vehicle" className='max-h-45 mt-10' />
       </div>
