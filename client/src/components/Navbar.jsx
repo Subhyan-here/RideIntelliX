@@ -14,7 +14,7 @@ const Navbar = ({setShowLogin}) => {
     xl:px-32 py-4 test-gray-600 broder-b border-borderColor relative transition-all
     ${location.pathname === "/" && "bg-light"}`}>
         
-        <Link to='/'>
+        <Link to='/'>      
             <img src={assets.logo} alt="logo" className="h-8"/>
         </Link>
         
@@ -25,7 +25,7 @@ const Navbar = ({setShowLogin}) => {
         ${open ? "max-sm:translate-x-8" : "max-sm:translate-x-full"}`}>
             {menuLinks.map((link, index)=>(
                 <Link key= {index} to={link.path}>
-                    {link.name}
+                    {link.name} 
                 </Link>
             ))}
 
@@ -38,11 +38,12 @@ const Navbar = ({setShowLogin}) => {
             </div>
 
             <div className='flex max-sm:flex-col items-start sm:items-center gap-6'>
-                <button onClick={()=>navigate('/owner')}
+                <button onClick={()=>navigate('/')}
                 className="cursor-pointer">Dashboard</button>
+
                 <button onClick={()=> setShowLogin(true)}
                 className="cursor-pointer px-8 py-2 bg-primary
-                hover:bg-primary-dull trasition-all text-white rounded-lg">Login</button>
+                hover:bg-primary-dull transition-all text-white rounded-lg">Login</button>
             </div>
         </div>
 
