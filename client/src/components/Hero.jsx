@@ -22,7 +22,7 @@ const Hero = () => {
                 {cityList.map((city)=> <option key={city} value={city}>{city}</option>)}
             </select>
             <p className='px-1 text-sm text-gray-500'>{pickupLocation ? 
-            pickupLocation: 'Please, Select a location'}</p>
+            pickupLocation: 'Select a location'}</p>
         </div>
 
          <div className='flex flex-col items-start gap-2'>
