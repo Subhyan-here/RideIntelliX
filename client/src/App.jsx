@@ -25,9 +25,7 @@ const isOwnerpath = useLocation().pathname.startsWith('/owner')
         <Route path='/my-bookings' element={<MyBookings/>}/>
       </Routes>
       
-
      {!isOwnerpath && <Footer />}
-      
     </>
   )
 }
