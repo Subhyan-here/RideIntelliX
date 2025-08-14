@@ -1,19 +1,21 @@
 import React from 'react'
 import { assets } from '../assets/assets'
+import { useNavigate } from 'react-router-dom'
 
 const VehicleCard = ({vehicle}) => {
 
     const currency = import.meta.env.VITE_CURRENCY
+    const navigate = useNavigate()
 
   return (
-    <div className='group rounded-xl overflow-hidden shadow-lg hover:translate-y-1
+    <div onClick={()=> {navigate(`/vehicle-details/${vehicle._id}`); scrollTo(0,0)}} className='group rounded-xl overflow-hidden shadow-lg hover:translate-y-1
     transition-all duration-500 cursor-pointer'>
 
         <div className='relative h-48 overflow-hidden'>
             <img src={vehicle.image} alt="Vehicle Image" className='w-full h-full object-cover
             transition-transform duration-500 group-hover:scale-105'/>
 
-                {vehicle.isAvailable && <p className='absolute top-4 left-4 bg-primary/90
+                {<p className='absolute top-4 left-4 bg-primary/90
                 text-white text-xs px-2.5 py-1 rounded-full'>Available Now</p>}
 
                 <div className='absolute bottom-4 right-4 bg-black/80 backdrop-blur-sm
@@ -34,7 +36,7 @@ const VehicleCard = ({vehicle}) => {
             <div className='mt-4 grid grid-cols-2 gap-y-2 text-gray-600'>
                     <div className='flex items-center text-sm text-muted-foreground'>
                         <img src={assets.fuel_icon} alt="" className='h-4 mr-2'/>
-                        <span>{vehicle.fuel_capacity} Fuel</span>
+                        <span>{vehicle.fuel_type}</span>
                     </div>
 
                     <div className='flex items-center text-sm text-muted-foreground'>

@@ -2,7 +2,9 @@ import React from 'react'
 
 const VehicleDetails = () => {
   return (
-    <div>V</div>
+    <div>
+      
+    </div>
   )
 }
 
