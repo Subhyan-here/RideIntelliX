@@ -2,10 +2,14 @@ import React, {useState} from 'react'
 import Navbar from './components/Navbar'
 import { Route, Routes, useLocation } from 'react-router-dom'
 import Home from './pages/Home'
+<<<<<<< Updated upstream
 import Vehicles from './pages/vehicles'
+=======
+>>>>>>> Stashed changes
 import MyBookings from './pages/MyBookings'
 import VehicleDetails from './pages/VehicleDetails'
 import Footer from './components/Footer'
+import Vehicles from './pages/Vehicles'
 
 
 const App = () => {
