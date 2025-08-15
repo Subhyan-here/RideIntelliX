@@ -33,8 +33,37 @@ const VehicleDetails = () => {
 
   <div className='grid grid-cols-2 sm:grid-cols-4 gap-4'>
    {[
-    {icon: assets.fuel_icon, text: `${vehicle.seating_capacity}`}
-   ]}
+    {icon: assets.users_icon, text: `${vehicle.seating_capacity}Seats`}
+    {icon: assets.fuel_icon, text: car.fuel_type},
+    {icon: assets.car_icon, text: car.car.transmission},
+    {icon: assets.car_icon, text: car.car.location},
+   ].map(({icon,text})=>(
+    <div key={text}className='flex flex-col items-center bg-light p-4 rounded-lg'>
+      <img src={icon} alt=""className='h-5 mb-2'/>
+      {text}
+    </div>
+   ))}
+  </div>
+  {/*Description*/}
+  <div>
+    <h1 className='text-xl font-medium mb-3'>Description</h1>
+    <p className='text-gray-500'>{vehicle.description}</p>
+  </div>
+  {/* Features */}
+  <div>
+  <h1 className='text-xl font-medium mb-3'>Description</h1>
+  <ul className ='grid grid-cols-1 sm:grid-cols-2 gap-2'>
+    {
+      ["360 camera","Bluetooth","Gps","Heated Seats","Rear view mirror"].map((item)=>{
+        return (
+          <li key={item} className='flex items-center text-gray-500'>
+            <img src={assets.check_icon} className='h-4 mr-2' alt="" />
+            {item}
+          </li>
+        )
+      })
+    }
+    </ul>  
   </div>
 </div>
 </div>
@@ -44,7 +73,7 @@ const VehicleDetails = () => {
 </div>
 
   </div>
-  ) : <p>Loading...</p>
+  ) : <Loader />
 }
 
 export default VehicleDetails
