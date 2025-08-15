@@ -2,9 +2,11 @@ import React, {useState} from 'react'
 import Navbar from './components/Navbar'
 import { Route, Routes, useLocation } from 'react-router-dom'
 import Home from './pages/Home'
-import VehicleDetails from './pages/vehicleDetails'
+
 import Vehicles from './pages/vehicles'
 import MyBookings from './pages/MyBookings'
+import VehicleDetails from './pages/VehicleDetails'
+import Footer from './components/Footer'
 
 
 const App = () => {
@@ -24,8 +26,10 @@ const isOwnerpath = useLocation().pathname.startsWith('/owner')
         <Route path='/vehicles' element={<Vehicles/>}/>
         <Route path='/my-bookings' element={<MyBookings/>}/>
       </Routes>
-      
-     {!isOwnerpath && <Footer />}
+
+    {!isOwnerpath && < Footer />}
+
+
     </>
   )
 }
