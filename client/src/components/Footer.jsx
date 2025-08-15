@@ -12,15 +12,10 @@ const Footer = () => {
                         Smooth and efficient Bike and Scooter rental platform with a wide collection of luxury and everyday vehicles for all your driving needs.
                     </p>
                     <div className='flex items-center gap-3 mt-6'>
-                        {/* Instagram */}
-                        <a href="#"><img src={assets.instagram_logo} className='w-5 h-5' alt="Instagram" /></a>
-                        {/* Facebook */}
-                         <a href="#"><img src={assets.facebook_logo} className='w-5 h-5' alt="Facebook" /></a>
-                        {/* Twitter */}
-                         <a href="#"><img src={assets.twitter_logo} className='w-5 h-5' alt="Twitter" /></a>
-                        {/* G-mail */}
-                         <a href="#"><img src={assets.gmail_logo} className='w-5 h-5' alt="G-mail" /></a>
-                        
+                      <a href="#"> <img src={assets.facebook_logo}  className='w-5 h-5' alt="" /></a>
+                      <a href="#"> <img src={assets.instagram_logo}  className='w-5 h-5' alt="" /></a>
+                      <a href="#"> <img src={assets.twitter_logo}  className='w-5 h-5' alt="" /></a>
+                      <a href="#"> <img src={assets.gmail_logo}  className='w-5 h-5' alt="" /></a>
                     </div>
                 </div>
 
@@ -47,17 +42,17 @@ const Footer = () => {
                 <div>
                     <h2 className='text-base font-medium text-gray-800 uppercase'>Contact Us</h2>
                     <ul className='mt-3 flex flex-col gap-1.5'>
-                        <li>xxx</li>
-                        <li>xxx</li>
-                        <li>xxx</li>    {/*need one address for our branch*/}
-                        <li>xxx</li>
+                        <li>1234 Luxury drive</li>
+                        <li>San Francisco,CA 94107</li>
+                        <li>+1 234 567890</li>    {/*need one address for our branch*/}
+                        <li>info@example.com</li>
                     </ul>
                 </div>
 
             </div>
 
             <div className='flex flex-col md:flex-row gap-2 items-center justify-between py-5'>
-                <p>© {new Date().getFullYear()} <a href="https://prebuiltui.com">PrebuiltUI</a>. All rights reserved.</p>
+                <p>© {new Date().getFullYear()} Brand. All rights reserved.</p>
                 <ul className='flex items-center gap-4'>
                     <li><a href="#">Privacy</a></li>
                     <li>|</li>
