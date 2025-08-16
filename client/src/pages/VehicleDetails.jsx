@@ -8,6 +8,9 @@ const VehicleDetails = () => {
   const navigate = userNavigate()
   const [vehicle, setVechicle] = useState(null)
   const currency = import.meta.env.VITE_CURRENCY
+  const handleSubmit = asnyc(e)=>{
+    e.preventDefault();
+  }
   useEffect(()=>{
     setVehicle(dummyVehicleData.find(vehicle => vehicle.id === id))
   },[id])
@@ -69,8 +72,15 @@ const VehicleDetails = () => {
 </div>
  
     {/* Right: Booking Form */}
-    <from className='shadow-lg-max-sticky top-18 rounded-xl p-6 space-y-6 text-gray-500'>
+    <from onsubmit={handleSubmit} className='shadow-lg-max-sticky top-18 rounded-xl p-6 space-y-6 text-gray-500'>
       <p className='flex items-center justify-between text-2xl text-gray-800 font-semibold'>{currency}{vehicle.pricePerDay} <span className='text-base text-gray-400 font-normal'>per day</span></p>
+   <hr className='border-borderColor my-6'/>
+   <div className='flex flex-col gap-2'>
+    <label htmlFor='return-date'>Return Dtae</label>
+    <input type="date" className='border border-borderColor px-3 py-2 rounded-lg' required id='return-date'/>
+   </div>
+   <button className='w-full bg-primary hover:bg-primary hover:bg-primary-dull transition-all py-3 font-medium text-white rounded-xl cursor-pointer'>Book Now</button>
+    <p className='text-center text-sm'>No credit card required to reserve</p>
     </from>
 </div>
 
