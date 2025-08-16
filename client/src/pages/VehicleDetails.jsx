@@ -1,32 +1,32 @@
-import React, {useEffect, useState} from 'react'
+import React, { useEffect } from 'react'
+import { useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
-import {dummyCarData } from '../assets/assets'
+import { assets, dummyCarData } from '../assets/assets'
 import Loader from '../components/Loader'
 
 const VehicleDetails = () => {
+  
+  const {id} = useParams()
+  const navigate = useNavigate()
+  const [vehicle, setVehicle] = useState(null)
+  const currency = import.meta.env.VITE_CURRENCY
 
-   const {id} = useParams()
-   const navigate = useNavigate()
-   const [vehicle, setVehicle] = useState(null)
-   const currency = import.meta.env.VITE_CURRENCY
-
-   const handleSubmit = async (e)=>{
+  const handleSubmit = async (e)=>{
     e.preventDefault();
-   }
+  }
 
-   useEffect(()=>{
+  useEffect(()=>{
     setVehicle(dummyCarData.find(vehicle => vehicle._id === id))
-   },[id])
-
+  },[id])  
+  
   return vehicle ? (
     <div className='px-6 md:px-16 lg:px-24 xl:px-32 mt-16'>
+      <button onClick={()=> navigate(-1)} className='flex items-center gap-2 mb-6 text-gray-500 cursor-pointer'>
+        <img src={assets.arrow_icon} alt="" className='rotate-180 opacity-65' />
+        Back to all vehicles
+      </button>
 
-     <button onClick={()=> navigate(-1)} className='flex items-center gap-2 mb-6 text-gray-500 cursor-pointer'>
-      <img src={assets.arrow_icon} alt="" className='rotate-180 opacity-65'/>
-      Back to all cars
-     </button>
-
-     <div className='grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12'>
+      <div className='grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12'>
         {/* Left: Vehicle Image & Details */}
         <div className='lg:col-span-2'>
           <img src={vehicle.image} alt="" className='w-full h-auto md:max-h-100 
@@ -34,53 +34,57 @@ const VehicleDetails = () => {
           <div className='space-y-6'>
             <div>
               <h1 className='text-3xl font-bold'>{vehicle.brand} {vehicle.model}</h1>
-              <p className='text-gray-500 text-lag'>{vehicle.category} • {vehicle.year} </p>
+              <p className='text-gray-500 text-lag'>{vehicle.category} • {vehicle.year}</p>
             </div>
-            <hr className='border-borderColor my-6'/>
+            <hr className='border-borderColor my-6' />
 
             <div className='grid grid-cols-2 sm:grid-cols-4 gap-4'>
-               {[
-                {icon:assets.users_icon, text: `${vehicle.seating_capacity} Seats`},
+              {[
+                {icon: assets.users_icon, text: `${vehicle.seating_capacity} Seats`},
                 {icon:assets.fuel_icon, text: vehicle.fuel_type},
-                {icon:assets.vehicle_icon, text: vehicle.transmission},
+                {icon:assets.car_icon, text: vehicle.transmission},
                 {icon:assets.location_icon, text: vehicle.location},
-               ].map(({icon, text})=>(
-               <div key={text} classname='flex flex-col items-center bg-light p-4 rounded-lg'>
-                <img src={icon} alt="" className='h-5 mb-2'/>
-                {text}
-               </div>
-               ))}
+              ].map(({icon, text})=>(
+                <div key={text} className='flex flex-col items-center bg-light p-4 rounded-lg'>
+                  <img src={icon} alt="" className='h-5 mb-2'/>
+                  {text}
+                </div>
+              ))}
             </div>
 
-            {/* Description */}
-            <div>
-              <h1 className='text-xl font-medium mb-3'>Description</h1>
-              <p className='text-gray-500'>{vehicle.description}</p>
-            </div>
-            
-            {/* Features */}
-            <div>
-               <h1 className='text-xl font-medium mb-3'>Features</h1>
-               <ul className='grid grid-cols-1 sm:grid-cols-2 gap-2'>
-                {
-                  ["360 camera", "Bluetooth", "Gps", "Heated Seats", "Rear view mirror"].map((item)=>(
+          {/* Description */}
+
+          <div>
+            <h1 className='text-xl font-medium mb-3'>Description</h1>
+            <p className='text-gray-500'>{vehicle.description}</p>
+          </div>
+
+          {/* Features */}
+
+          <div>
+            <h1 className='text-xl font-medium mb-3'>Features</h1>
+            <ul className='grid grid-cols-1 sm:grid-cols-2 gap-2'>
+              {
+                ["360 camera", "Bluetooth", "Gps", "Heated Seats",
+                  "Rear view mirror"].map((item)=>(
                     <li key={item} className='flex items-center text-gray-500'>
-                      <img src={assets.check_icon} className='h-4 mr-2' alt=""/>
+                      <img src={assets.check_icon} className='h-4 mr-2' alt="" />
                       {item}
                     </li>
                   ))
-                }
-               </ul>
-            </div>
+              }
+            </ul>
+          </div>
 
           </div>
         </div>
 
         {/* Right: Booking Form */}
-        <form onSubmit={handlesubmit} className='shadow-lg h-max sticky top-18 rounded-xl p-6 space-y-6 text-gray-500'>
 
+        <form onSubmit={handleSubmit} className='shadow-lg h-max sticky top-18 rounded-xl 
+        p-6 space-y-6 text-gray-500'>
           <p className='flex items-center justify-between text-2x1 text-gray-800 
-          font-semibold'>{currency}{vehicle.pricePerDay}<span className='text-base
+          font-semibold'>{currency} {vehicle.pricePerDay}<span className='text-base 
           text-gray-400 font-normal'> per day</span></p>
 
           <hr className='border-borderColor my-6'/>
@@ -105,10 +109,10 @@ const VehicleDetails = () => {
           <p className='text-center text-sm'>No credit card required to reserve</p>
 
         </form>
-     </div>
+      </div>
 
     </div>
-  ) : <Loader/>
+  ) : <Loader />
 }
 
 export default VehicleDetails
