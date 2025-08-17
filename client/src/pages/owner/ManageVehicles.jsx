@@ -43,17 +43,16 @@ const ManageVehicles = () => {
                     rounded-md object-cover" />
                     <div className='max-md:hidden'>
                       <p className='font-medium'>{vehicle.brand} {vehicle.model}</p>
-                      <p className='font-medium'>{vehicle.seating_capacity} • 
+                      <p className='text-xs text-gray-500'>{vehicle.seating_capacity} • 
                         {vehicle.transmission}</p>
                     </div>
                 </td>
 
                 <td className='p-3 max-md:hidden'>{vehicle.category}</td>
-                <td className='p-3 max-md:hidden'>{currency}{vehicle.pricePerDay}/day</td>
+                <td className='p-3'>{currency}{vehicle.pricePerDay}/day</td>
 
                 <td className='p-3 max-md:hidden'>
-                  <span className={`px-3 py-1 rounded-full text-xs ${vehicle.
-                  isAvailable ? 'bg-green-100 text-green-500' : 'bg-red-100 text-red-500'}`}>
+                  <span className={`px-3 py-1 rounded-full text-xs ${vehicle.isAvaliable ? 'bg-green-100 text-green-500' : 'bg-red-100 text-red-500'}`}>
                     {vehicle.isAvaliable ? "Available" : "Unavailable" }
                   </span>
                 </td>
