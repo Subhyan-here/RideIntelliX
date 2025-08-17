@@ -6,6 +6,11 @@ import MyBookings from './pages/MyBookings'
 import VehicleDetails from './pages/VehicleDetails'
 import Footer from './components/Footer'
 import Vehicles from './pages/Vehicles'
+import Layout from './pages/owner/Layout'
+import Dashboard from './pages/owner/Dashboard'
+import AddVehicle from './pages/owner/AddVehicle'
+import ManageVehicles from './pages/owner/ManageVehicles'
+import ManageBookings from './pages/owner/ManageBookings'
 
 
 const App = () => {
@@ -24,6 +29,12 @@ const isOwnerpath = useLocation().pathname.startsWith('/owner')
         <Route path='/vehicle-details/:id' element={<VehicleDetails/>}/>
         <Route path='/vehicles' element={<Vehicles/>}/>
         <Route path='/my-bookings' element={<MyBookings/>}/>
+        <Route path='/owner' element={<Layout />}>
+          <Route index element={<Dashboard/>}/>
+          <Route path="add-vehicle" element={<AddVehicle/>}/>
+          <Route path="manage-vehicles" element={<ManageVehicles/>}/>
+          <Route path="manage-bookings" element={<ManageBookings/>}/>
+        </Route>
       </Routes>
 
     {!isOwnerpath && < Footer />}
