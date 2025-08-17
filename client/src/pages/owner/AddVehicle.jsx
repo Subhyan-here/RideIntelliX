@@ -45,7 +45,7 @@ const AddVehicle = () => {
         <div className='grid grid-cols-1 md:grid-cols-2 gap-6'>
             <div className='flex flex-col w-full'>
                 <label>Brand</label>
-                <input type="text" placeholder="e.g. Royal Enfield, Hero, Honda, TVS... " required
+                <input type="text" placeholder="e.g. Royal Enfield, Hero, Ola, TVS... " required
                 className='px-3 py-2 mt-1 border border-borderColor rounded-md
                 outline-none' value={vehicle.brand} onChange={e=> setVehicle({...vehicle, brand: e.target.value})}/>
             </div>
@@ -124,6 +124,7 @@ const AddVehicle = () => {
                 <option value="Delhi">Delhi</option>
                 <option value="Kolkata">Kolkata</option>
                 <option value="Mumbai">Mumbai</option>
+                <option value="Chennei">Chennei</option>
                </select>
         </div>
 
