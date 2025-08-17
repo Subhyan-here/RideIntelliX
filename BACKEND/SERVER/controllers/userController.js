@@ -1,6 +1,7 @@
 import brycptjs from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import User from '../models/user.js';
+import Vehicle from '../models/vehicle.js';
 
 
 //Generate JWT token
@@ -40,7 +41,7 @@ export const createUser = async(req,res)=>{
     }
 }
 
-//API to logi user
+//API to login user
 export const loginUser = async(req,res) =>{
     try {
         const {email, password} =req.body
@@ -96,3 +97,15 @@ export const deleteUser = async(req,res)=>{
     
 }
 
+//Get All Vehicles for the Frontend
+
+export const getVehicles = async(req,res)=>{
+    try {
+        const vehicles  = await Vehicle.find({isAvaillable: true})
+        res.json({success: true, vehicles})
+    } catch (error) {
+        console.log(error.message);
+        res.json({success: false, message: error.message})
+    }
+    
+}
