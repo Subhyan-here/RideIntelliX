@@ -43,7 +43,7 @@ const AddVehicle = () => {
     };
     Object.entries(payload).forEach(([k, v]) => formData.append(k, v));
 
-    await axios.post('/api/owner/vehicles', formData, {
+    await axios.post('/api/owner/add-vehicle', formData, {
       headers: { 'Content-Type': 'multipart/form-data' },
     });
 
