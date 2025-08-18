@@ -44,7 +44,7 @@ const Footer = () => {
                     <ul className='mt-3 flex flex-col gap-1.5'>
                         <li>1234 Luxury drive</li>
                         <li>San Francisco,CA 94107</li>
-                        <li>+1 234 567890</li>    {/*need one address for our branch*/}
+                        <li>+1 234 567890</li>               {/*need one address for our branch*/}
                         <li>info@example.com</li>
                     </ul>
                 </div>
