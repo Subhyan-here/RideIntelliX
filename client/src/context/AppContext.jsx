@@ -15,7 +15,7 @@ export const AppProvider = ({ children })=>{
 
     const [token, setToken] = useState(localStorage.getItem("token") || null);
     const [user, setUser] = useState(null)
-    const [isowner, setIsOwner] = useState(false)
+    const [isOwner, setIsOwner] = useState(false)
     const [showLogin, setShowLogin] = useState(false)
     const [pickupDate, setPickupDate] = useState('')
     const [returnDate, setReturnDate] = useState('')
@@ -74,8 +74,8 @@ export const AppProvider = ({ children })=>{
     },[token])
 
     const value = {
-        navigate,currency, axios, user, setUser,
-        token, setToken, isowner, setIsOwner, fetchUser, showLogin,
+        navigate, currency, axios, user, setUser,
+        token, setToken, isOwner, setIsOwner, fetchUser, showLogin,
         setShowLogin, logout, fetchVehicles, vehicles, setVehicles, 
         pickupDate, setPickupDate, returnDate, setReturnDate
     }

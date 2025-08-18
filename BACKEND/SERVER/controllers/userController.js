@@ -101,7 +101,7 @@ export const deleteUser = async(req,res)=>{
 
 export const getVehicles = async(req,res)=>{
     try {
-        const vehicles  = await Vehicle.find({isAvaillable: true})
+        const vehicles  = await Vehicle.find({isAvaliable: true})
         res.json({success: true, vehicles})
     } catch (error) {
         console.log(error.message);
