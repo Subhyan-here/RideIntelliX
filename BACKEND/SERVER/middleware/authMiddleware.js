@@ -16,7 +16,9 @@ export const authMiddleware = async (req,res,next)=> {
         req.user = await User.findById(userId).select("-password")
         next();
     } catch(error){
-        res.json({success: false, message:"Not authorized"});
+       return res.json({success: false, message:"Not authorized"});
     }
 }
+
+
 export default authMiddleware

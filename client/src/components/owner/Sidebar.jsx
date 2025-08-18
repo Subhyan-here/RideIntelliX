@@ -28,7 +28,6 @@ const Sidebar = () => {
                 justify-center cursor-pointer'>
                     <img src={assets.edit_icon} alt="" />
                 </div>
-
             </label>
         </div>
 

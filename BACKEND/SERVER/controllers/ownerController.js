@@ -11,6 +11,9 @@ import Booking from "../models/booking.js";
 export const changeRoleToOwner = async (req, res)=>{
     try {
         const {_id}= req.user;
+        if (!req.user) {
+            return res.status(401).json({ message: "Unauthorized" });
+        }
         await User.findByIdAndUpdate(_id, {role: "owner"})
         res.json({success: true, message: "Now you can list a vehicle"})
     } catch(error) {

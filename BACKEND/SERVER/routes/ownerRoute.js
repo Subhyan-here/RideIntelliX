@@ -6,7 +6,7 @@ import { dashboardData, updateUserImage } from "../controllers/ownerController.j
 
 const ownerRouter = express.Router();
 
-ownerRouter.post("/change-role", changeRoleToOwner )
+ownerRouter.post("/change-role",authMiddleware, changeRoleToOwner )
 ownerRouter.post("/add-vehicle", picture.single("image"),  authMiddleware, addvehicle)
 ownerRouter.post("/vehicles", authMiddleware, getOwnerVehicles)
 ownerRouter.get("/toggle-vehicle", authMiddleware, toggleVehicleAvailability)
