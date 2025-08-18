@@ -193,7 +193,7 @@ export const updateUserImage = async (req,res)=>{
         const image = optimizedimageURL;
 
         await User.findByIdAndUpdate(_id, {image});
-        res.json({success: true, message: "User image updsted"})
+        res.json({success: true, message: "User image updated"})
 
     } catch (error) {
         console.log(error.message);

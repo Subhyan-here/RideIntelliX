@@ -96,8 +96,8 @@ export const menuLinks = [
 
 export const ownerMenuLinks = [
     { name: "Dashboard", path: "/owner", icon: dashboardIcon, coloredIcon: dashboardIconColored },
-    { name: "Add car", path: "/owner/add-vehicle", icon: addIcon, coloredIcon: addIconColored },
-    { name: "Manage Cars", path: "/owner/manage-vehicles", icon: carIcon, coloredIcon: carIconColored },
+    { name: "Add Vehicle", path: "/owner/add-vehicle", icon: addIcon, coloredIcon: addIconColored },
+    { name: "Manage Vehicles", path: "/owner/manage-vehicles", icon: carIcon, coloredIcon: carIconColored },
     { name: "Manage Bookings", path: "/owner/manage-bookings", icon: listIcon, coloredIcon: listIconColored },
 ]
 

@@ -92,8 +92,7 @@ const VehicleDetails = () => {
           <div className='flex flex-col gap-2'>
             <label htmlFor="pickup-date">Pickup Date</label>
             <input type="date" className='border border-borderColor px-3 py-2
-             rounded-lg' required id='pickup-date' min={new Date().toISOString().
-             split('T')[0]}/>
+             rounded-lg' required id='pickup-date' min={new Date().toISOString().split('T')[0]}/>
           </div>
 
           <div className='flex flex-col gap-2'>
