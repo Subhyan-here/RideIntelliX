@@ -36,7 +36,7 @@ const AddVehicle = () => {
       brand: vehicle.brand.trim(),
       model: vehicle.model.trim(),
       year: Number(vehicle.year || 0),
-      priceperDay: Number(vehicle.priceperday || 0),
+      priceperday: Number(vehicle.priceperday || 0),
       fuel_type: vehicle.fuel_type,
       location: vehicle.location,
       description: vehicle.description.trim(),
@@ -47,7 +47,7 @@ const AddVehicle = () => {
       headers: { 'Content-Type': 'multipart/form-data' },
     });
 
-    toast.success('Vehicle listed');
+    toast.success('Vehicle Added');
   } catch (err) {
     toast.error(err.response?.data?.message || err.message);
   } finally {
