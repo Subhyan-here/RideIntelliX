@@ -6,18 +6,18 @@ import { motion } from 'motion/react';
 const Testimonials = () => {
 
     const testimonials = [
-        { name: "Emma Rodriguez", 
-          location: "Barcelona, Spain", 
+        { name: "Rupali Dey", 
+          location: "Mumbai, India", 
           image: assets.testimonial_image_1, 
           rating: 5,
           testimonial: "I've rented vehicles from various companies,but the experiences with your company was exceptional." },
-        { name: "Liam Johnson", 
-          location: "New York, USA", 
+        { name: "Nikhil Gupta", 
+          location: "Delhi, India", 
           image: assets.testimonial_image_2, 
           rating: 5,
           testimonial: "I've rented vehicles from various companies,but the experiences with your company was exceptional." },
-         { name: "Sophia Lee", 
-          location: "Seoul, South Korea", 
+         { name: "Savita Shukla", 
+          location: "Kolkata, India", 
           image: assets.testimonial_image_3, 
           rating: 5,
           testimonial: "I've rented vehicles from various companies,but the experiences with your company was exceptional." }, 
@@ -49,7 +49,7 @@ const Testimonials = () => {
                             </div>
                         </div>
                         <div className="flex items-center gap-1 mt-4">
-                            {Array(5).fill(0).map((_, index) => (
+                            {Array(4).fill(0).map((_, index) => (
                                 <img key={index} src={assets.star_icon}
                                 alt="star-icon"/>
                             ))}
