@@ -1,19 +1,32 @@
 import React, { useEffect, useState } from 'react'
 import { assets, dummyCarData } from '../../assets/assets'
 import Title from '../../components/owner/Title'
+import { useAppContext } from '../../context/AppContext'
+import toast from 'react-hot-toast'
 
 const ManageVehicles = () => {
 
-  const currency = import.meta.env.VITE_CURRENCY
+  const {isOwner, axios, currency} = useAppContext()
+
   const [vehicles,setVehicles] = useState([])
 
   const fetchOwnervehicles = async ()=>{
-    setVehicles(dummyCarData)
+    try {
+      const  {data} = await axios.get('/api/owner/vehicles')
+      if(data.success){
+        setVehicles(data.vehicles)
+      }else{
+        toast.error(data.message)
+      }
+    } catch (error) {
+      toast.error(error.message)
+    }
   }
 
+
   useEffect(()=>{
-    fetchOwnervehicles()
-  },[])
+    isOwner && fetchOwnervehicles()
+  },[isOwner])
 
   return (
     <div className='px-4 pt-10 md:px-10 w-full'>

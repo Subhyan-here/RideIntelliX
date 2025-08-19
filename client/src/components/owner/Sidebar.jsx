@@ -15,8 +15,7 @@ const {user, axios, fetchUser} = useAppContext()
             const formData = new FormData()
             formData.append('image', image)
 
-            const {data} = await axios.post('/api/owner/update-image', 
-            formData)
+            const {data} = await axios.post('/api/owner/update-image', formData)
 
             if (data.success) {
                 fetchUser()

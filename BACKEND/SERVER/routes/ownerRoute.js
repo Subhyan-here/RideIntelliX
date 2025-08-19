@@ -11,7 +11,7 @@ ownerRouter.post("/add-vehicle", picture.single("image"),  authMiddleware, addve
 ownerRouter.post("/vehicles", authMiddleware, getOwnerVehicles)
 ownerRouter.get("/toggle-vehicle", authMiddleware, toggleVehicleAvailability)
 ownerRouter.post("/delete-vehicle", authMiddleware, deleteVehicle)
-ownerRouter.get('/dashboard', authMiddleware, dashboardData)
-ownerRouter.post('/update-image', picture.single("image"), authMiddleware, updateUserImage)
+ownerRouter.get("/dashboard", authMiddleware, dashboardData)
+ownerRouter.post("/update-image", picture.single("image"), authMiddleware, updateUserImage)
 
 export default ownerRouter;
