@@ -55,7 +55,7 @@ const VehicleDetails = () => {
 
             <div className='grid grid-cols-2 sm:grid-cols-4 gap-4'>
               {[
-                {icon: assets.users_icon, text: `${vehicle.seating_capacity} Seats`},
+                {icon: assets.users_icon, text: `${vehicle.user_name} `},
                 {icon:assets.fuel_icon, text: vehicle.fuel_type},
                 {icon:assets.car_icon, text: vehicle.transmission},
                 {icon:assets.location_icon, text: vehicle.location},
