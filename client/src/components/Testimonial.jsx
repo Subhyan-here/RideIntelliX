@@ -28,7 +28,7 @@ const Testimonials = () => {
   return (
     <div className="py-28 px-6 md:px-16 lg:px-24 xl:px:-44">
             
-        <Title title="What Our customer Say" subtitle="Discover why discerning 
+        <Title title="What Our Customer Say" subtitle="Discover why discerning 
         travelers choose for their luxury accomodations around the world."/>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-18">
