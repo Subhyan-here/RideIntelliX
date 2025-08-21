@@ -41,6 +41,8 @@ import car_image1 from "./car_image1.png"
 import car_image2 from "./car_image2.png"
 import car_image3 from "./car_image3.png"
 import car_image4 from "./car_image4.png"
+import car_image5 from "./car_image5.png"
+import car_image6 from "./car_image6.png"
 
 export const cityList = ['Delhi', 'Mumbai', 'Chennai', 'Kolkata', 'Hydrabad']
 
@@ -87,7 +89,9 @@ export const assets = {
     user_profile,
     car_image2,
     car_image3,
-    car_image4
+    car_image4,
+    car_image5,
+    car_image6
 }
 
 export const menuLinks = [
@@ -179,6 +183,40 @@ export const dummyCarData = [
         "description": "The Royal Enfield Himalayan 450 is a powerful adventure motorcycle featuring a 452cc engine, advanced technology, and a robust design, making it ideal for both off-road and touring experiences.",
         "isAvaliable": true,
         "createdAt": "2025-04-17T06:15:47.318Z",
+    },
+    {
+        "_id": "67ff5bc069c03d4e45f30b02",
+        "owner": "67fe3467ed8a8fe17d0ba6e2",
+        "brand": "Randi",
+        "model": "Roadster",
+        "image": car_image6,
+        "year": 2025,
+        "category": "Bike",
+        "user_name": "Raj Kundra",
+        "fuel_type": "Electric",
+        "transmission": "Semi-Automatic",
+        "pricePerDay": 1800,
+        "location": "Mumbai",
+        "description": "The Ola Roadster is an electric motorcycle available in multiple variants, including the Roadster X, Roadster X Plus, and Roadster Pro. These variants offer different ranges, top speeds, and battery capacities. The Roadster X, for example, has a range of up to 252 km and a top speed of 118 kmph, while the Roadster Pro can reach 579 km and 194 kmph.",
+        "isAvaliable": true,
+        "createdAt": "2025-04-16T07:26:56.215Z",
+    },
+    {
+        "_id": "67ff5bc069c03d4e45f30b45",
+        "owner": "67fe3467ed8a8fe17d0ba6e2",
+        "brand": "Royal Enfield",
+        "model": "Classic 350",
+        "image": car_image5,
+        "year": 2023,
+        "category": "Bike",
+        "user_name": "Bikash Santra",
+        "fuel_type": "Petrol",
+        "transmission": "Semi-Automatic",
+        "pricePerDay": 2000,
+        "location": "Kolkata",
+        "description": "Royal Enfield Classic 350 DarkThe Royal Enfield Classic 350 is a retro-styled motorcycle known for its classic design and comfortable riding experience. It features a 349cc engine, a twin downtube spine frame, and a comfortable, upright riding posture. ",
+        "isAvaliable": true,
+        "createdAt": "2025-04-16T07:26:56.215Z",
     }
 ];
 
@@ -219,6 +257,28 @@ export const dummyMyBookingsData = [
     {
         "_id": "6847fe790fb481c5cfd92d94",
         "car": dummyCarData[3],
+        "user": "6847f7cab3d8daecdb517095",
+        "owner": "6847f7cab3d8daecdb517095",
+        "pickupDate": "2025-06-11T00:00:00.000Z",
+        "returnDate": "2025-06-12T00:00:00.000Z",
+        "status": "confirmed",
+        "price": 2500,
+        "createdAt": "2025-06-10T09:44:25.410Z",
+    },
+    {
+        "_id": "6847fe790fb481c5cfd92d94",
+        "car": dummyCarData[4],
+        "user": "6847f7cab3d8daecdb517095",
+        "owner": "6847f7cab3d8daecdb517095",
+        "pickupDate": "2025-06-11T00:00:00.000Z",
+        "returnDate": "2025-06-12T00:00:00.000Z",
+        "status": "confirmed",
+        "price": 2500,
+        "createdAt": "2025-06-10T09:44:25.410Z",
+    },
+    {
+        "_id": "6847fe790fb481c5cfd92d94",
+        "car": dummyCarData[5],
         "user": "6847f7cab3d8daecdb517095",
         "owner": "6847f7cab3d8daecdb517095",
         "pickupDate": "2025-06-11T00:00:00.000Z",

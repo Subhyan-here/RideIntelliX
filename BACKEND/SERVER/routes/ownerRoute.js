@@ -6,12 +6,12 @@ import { dashboardData, updateUserImage } from "../controllers/ownerController.j
 
 const ownerRouter = express.Router();
 
-ownerRouter.post("/change-role",authMiddleware, changeRoleToOwner )
-ownerRouter.post("/add-vehicle", picture.single("image"),  authMiddleware, addvehicle)
-ownerRouter.get("/vehicles", authMiddleware, getOwnerVehicles)
+ownerRouter.post('/change-role',authMiddleware, changeRoleToOwner )
+ownerRouter.post('/add-vehicle', picture.single("image"),  authMiddleware, addvehicle)
+ownerRouter.get('/vehicles', authMiddleware, getOwnerVehicles)
 ownerRouter.get("/toggle-vehicle", authMiddleware, toggleVehicleAvailability)
-ownerRouter.post("/delete-vehicle", authMiddleware, deleteVehicle)
-ownerRouter.get("/dashboard", authMiddleware, dashboardData)
+ownerRouter.delete("/delete-vehicle", authMiddleware, deleteVehicle)
+ownerRouter.get('/dashboard', authMiddleware, dashboardData)
 ownerRouter.post("/update-image", picture.single("image"), authMiddleware, updateUserImage)
 
 export default ownerRouter;

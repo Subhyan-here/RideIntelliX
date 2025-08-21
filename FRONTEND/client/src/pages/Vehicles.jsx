@@ -42,13 +42,12 @@ const Vehicles = () => {
        transition={{delay: 0.6, duration: 0.5}}
       
       className='px-6 md:px-16 lg:px-24 xl:px-32 mt-10'>
-      <p className='text-gray-500 xl:px-20 max-w-7x1 mx-auto'>Showing 
-        {dummyCarData.length} Vehicles</p>
+      <p className='text-gray-500 xl:px-20 max-w-7x1 mx-auto'>Showing {dummyCarData.length} Vehicles</p>
 
       <motion.div 
       initial={{opacity: 0, y: 20}}
       animate={{opacity: 1, y: 0}}
-      transition={{delay: 0.1 * index, duration: 0.4}}
+      transition={{delay: 0.1 , duration: 0.4}}
       
       className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-4 xl:px-20 max-w-7x1 mx-auto'>
         {dummyCarData.map((vehicle, index)=> (

@@ -4,7 +4,7 @@ import authMiddleware from '../middleware/authMiddleware.js';
 import { createRider, deleteRider, getallRider, updateRider } from '../controllers/riderController.js';
 
 
-const userRouter = express.Router();
+const riderRouter = express.Router();
 
 
 // const multer = require('multer');
@@ -21,9 +21,9 @@ const userRouter = express.Router();
 
 // const upload = multer({storage:storage});
 
-userRouter.get('/', authMiddleware, createRider);
-userRouter.post('/create-user', picture.single("image"), authMiddleware, getallRider);
-userRouter.put('/:id', authMiddleware, updateRider);
-userRouter.delete('/:id', authMiddleware, deleteRider);
+riderRouter.get('/create', authMiddleware, createRider);
+riderRouter.post('/create-rider', picture.single("image"), authMiddleware, getallRider);
+riderRouter.put('/:id', authMiddleware, updateRider);
+riderRouter.delete('/:id', authMiddleware, deleteRider);
 
-export default userRouter;
+export default riderRouter;

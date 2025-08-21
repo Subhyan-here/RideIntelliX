@@ -55,7 +55,7 @@ const Footer = () => {
                     <h2 className='text-base font-medium text-gray-800 uppercase'>Quick Links</h2>
                     <ul className='mt-3 flex flex-col gap-1.5'>
                         <li><a href="#">Home</a></li>
-                        <li><a href="#">Browse Vehicles</a></li>
+                        <li><a href="/vehicles">Browse Vehicles</a></li>
                         <li><a href="#">List your Vehicles</a></li>
                         <li><a href="#">About Us</a></li>
                     </ul>
