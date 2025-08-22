@@ -5,7 +5,7 @@ import { motion } from 'motion/react'
 const Newsletter = () => {
   return (
      <div className="md:grid md:grid-cols-2 max-w-4xl bg-white mx-4 md:mx-auto rounded-xl max-md:px-4 my-10 mb-40">
-            <img src={assets.car_image1}
+            <img src={assets.car_image5}
                 alt="newsletter" className="hidden md:block w-full max-w-lg rounded-xl" />
             <div className="relative flex items-center justify-center">
                 <button className="absolute top-6 right-6" aria-label="Close">
