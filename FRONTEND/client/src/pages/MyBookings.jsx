@@ -2,18 +2,20 @@ import React, { useEffect, useState } from 'react'
 import { assets, dummyMyBookingsData } from '../assets/assets'
 import Title from '../components/Title'
 import { motion } from 'motion/react'
+import { useAppContext } from '../context/AppContext'
 
 const MyBookings = () => {
 
+  const {currency, axios, user } = useAppContext()
+
   const [bookings, setBookings] = useState([])
-  const currency = import.meta.env.VITE_CURRENCY
 
   const fetchMyBookings = async () => {
-    setBookings(dummyMyBookingsData)
+    setBookings(dummyMyBookingsData)           //changes needed [One try-catch block needed]
   }
 
   useEffect(()=> {
-    fetchMyBookings()
+    fetchMyBookings()             //changes needed [user will be written]
   },[])
 
   return (
