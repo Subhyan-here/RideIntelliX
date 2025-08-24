@@ -6,21 +6,6 @@ import { createRider, deleteRider, getallRider, updateRider } from '../controlle
 
 const riderRouter = express.Router();
 
-
-// const multer = require('multer');
-
-//image upload
-// const storage = multer.diskStorage({
-//     destination:function(req,file,cb) {
-//         cb(null, 'uploads/');
-//     },
-//     filename:function(req,file,cb) {
-//         cb(null,Date.now()+ path.extname(file.originalname));
-//     },
-// });
-
-// const upload = multer({storage:storage});
-
 riderRouter.get('/create', authMiddleware, createRider);
 riderRouter.post('/create-rider', picture.single("image"), authMiddleware, getallRider);
 riderRouter.put('/:id', authMiddleware, updateRider);

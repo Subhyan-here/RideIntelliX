@@ -119,13 +119,13 @@ export const ownerMenuLinks = [
     { name: "Manage Bookings", path: "/owner/manage-bookings", icon: listIcon, coloredIcon: listIconColored },
 ]
 
-export const dummyUserData = {
-  "_id": "6847f7cab3d8daecdb517095",
-  "name": "Xavier",
-  "email": "admin@example.com",
-  "role": "owner",
-  "image": user_profile,
-}
+// export const dummyUserData = {
+//   "_id": "6847f7cab3d8daecdb517095",
+//   "name": "Xavier",
+//   "email": "admin@example.com",
+//   "role": "owner",
+//   "image": user_profile,
+// }
 
 export const dummyCarData = [
     {
@@ -403,14 +403,14 @@ export const dummyMyBookingsData = [
     }
 ]
 
-export const dummyDashboardData = {
-    "totalVehicles": 4,
-    "totalBookings": 2,
-    "pendingBookings": 0,
-    "completedBookings": 2,
-    "recentBookings": [
-        dummyMyBookingsData[0],
-        dummyMyBookingsData[1]
-    ],
-    "monthlyRevenue": 840
-}
+// export const dummyDashboardData = {
+//     "totalVehicles": 4,
+//     "totalBookings": 2,
+//     "pendingBookings": 0,
+//     "completedBookings": 2,
+//     "recentBookings": [
+//         dummyMyBookingsData[0],
+//         dummyMyBookingsData[1]
+//     ],
+//     "monthlyRevenue": 840
+// }
