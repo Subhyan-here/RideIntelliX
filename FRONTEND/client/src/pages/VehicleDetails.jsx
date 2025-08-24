@@ -4,10 +4,16 @@ import { useNavigate, useParams } from 'react-router-dom'
 import { assets, dummyCarData } from '../assets/assets'
 import Loader from '../components/Loader'
 import { motion } from 'motion/react'
+import { useAppContext } from '../context/AppContext'
 
 const VehicleDetails = () => {
   
   const {id} = useParams()
+
+  //changes applied
+  const {vehicles, axios, pickupDate, setPickupDate, returnDate, setReturnDate} 
+  = useAppContext()
+  
   const navigate = useNavigate()
   const [vehicle, setVehicle] = useState(null)
   const currency = import.meta.env.VITE_CURRENCY
@@ -17,8 +23,8 @@ const VehicleDetails = () => {
   }
 
   useEffect(()=>{
-    setVehicle(dummyCarData.find(vehicle => vehicle._id === id))
-  },[id])  
+    setVehicle(dummyCarData.find(vehicle => vehicle._id === id))      //changes needed  [dummyCarData --> vehicles]
+  },[id])  // changes needed  [add vehicles in the array]
   
   return vehicle ? (
     <div className='px-6 md:px-16 lg:px-24 xl:px-32 mt-16'>

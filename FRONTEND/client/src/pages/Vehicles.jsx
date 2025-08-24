@@ -1,12 +1,60 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Title from '../components/Title'
 import { assets, dummyCarData } from '../assets/assets'
 import VehicleCard from '../components/VehicleCard'
 import { motion } from 'motion/react'
+import { useSearchParams } from 'react-router-dom'
+import { useAppContext } from '../context/AppContext'
+import toast from 'react-hot-toast'
 
 const Vehicles = () => {
 
+  //getting search params from url
+  const [searchParams] = useSearchParams()
+  const pickupLocation = searchParams.get('pickupLocation')
+  const pickupDate = searchParams.get('pickupDate')
+  const returnDate = searchParams.get('returnDate')
+
+  const {vehicles , axios} = useAppContext()
+
   const [input, setInput] = useState('')
+
+  const isSearchData = pickupLocation && pickupDate && returnDate
+  const [filteredVehicles, setFilteredVehicles] = useState([])      //filteredVehicles will be used
+
+  const applyFilter = async ()=>{
+    if(input === ''){
+      setFilteredVehicles(vehicles)
+      return null
+    }
+    
+    //changes may applied later
+    const filtered = vehicles.slice().filter((vehicle)=>{
+      return vehicle.brand.toLowerCase().includes(input.toLowerCase())
+      || vehicle.model.toLowerCase().includes(input.toLowerCase())
+      || vehicle.category.toLowerCase().includes(input.toLowerCase())
+    })
+  }
+
+  const searchVehicleAvailability = async () =>{
+    const {data} = await axios.post('/api/bookings/check-availability', 
+      {location: pickupLocation, pickupDate, returnDate})
+      if(data.success){
+        setFilteredVehicles(data.availablevehicles)
+        if(data.availablevehicles.length === 0){
+          toast('No Vehicles Available')
+        }
+        return null
+      }
+  }
+
+  useEffect(()=>{
+    isSearchData && searchVehicleAvailability()
+  },[])
+
+  useEffect(()=>{
+    vehicles.length > 0 && !isSearchData && applyFilter()
+  },[input, vehicles])
 
   return (
     <div>
@@ -28,7 +76,7 @@ const Vehicles = () => {
       rounded-full shadow'>
         <img src={assets.search_icon} alt="" className='w-4.5 h-4.5 mr-2'/>
 
-        <input onClick={(e)=> setInput(e.target.value)} value={input} type="text" 
+        <input onChange={(e)=> setInput(e.target.value)} value={input} type="text" 
             placeholder='Search by make, model, or features' className='w-full h-full 
             outline-none text-gray-500' />
             
@@ -40,9 +88,10 @@ const Vehicles = () => {
        initial={{opacity: 0}}
        animate={{opacity: 1}}
        transition={{delay: 0.6, duration: 0.5}}
-      
+       //changes needed  [dummyCarData --> filteredVehicles]
       className='px-6 md:px-16 lg:px-24 xl:px-32 mt-10'>
-      <p className='text-gray-500 xl:px-20 max-w-7x1 mx-auto'>Showing {dummyCarData.length} Vehicles</p>
+      <p className='text-gray-500 xl:px-20 
+      max-w-7x1 mx-auto'>Showing {dummyCarData.length} Vehicles</p> 
 
       <motion.div 
       initial={{opacity: 0, y: 20}}
@@ -50,7 +99,8 @@ const Vehicles = () => {
       transition={{delay: 0.1 , duration: 0.4}}
       
       className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-4 xl:px-20 max-w-7x1 mx-auto'>
-        {dummyCarData.map((vehicle, index)=> (
+        {dummyCarData.map((vehicle, index)=> (            // here,  we have to write vehilces in the place of dummyCarData
+                                                             //changes needed  [dummyCarData --> filteredVehicles]
           <div key={index}>
             <VehicleCard vehicle={vehicle} />
           </div>

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { assets, dummyDashboardData } from '../../assets/assets'
+import { assets} from '../../assets/assets'
 import Title from '../../components/owner/Title'
 import { useAppContext } from '../../context/AppContext'
 import toast from 'react-hot-toast'
@@ -24,7 +24,7 @@ const Dashboard = () => {
         {title: "Confirnmed", value: data.completedBookings, icon: assets.listIconColored},
     ]
 
-    const FetchDashboardData = async() =>{
+    const fetchDashboardData = async() =>{
         try {
             const {data} = await axios.get('/api/owner/dashboard')
             if(data.success){
@@ -39,7 +39,7 @@ const Dashboard = () => {
 
     useEffect(()=>{
         if(isOwner){
-            FetchDashboardData()
+            fetchDashboardData()
         }
     },[isOwner])
 

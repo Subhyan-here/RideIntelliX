@@ -4,10 +4,13 @@ import { assets, dummyCarData } from '../assets/assets'
 import VehicleCard from './VehicleCard'
 import {useNavigate} from 'react-router-dom'
 import { motion } from 'motion/react' 
+import { useAppContext } from '../context/AppContext'
 
 const FeaturedSection = () => {
 
     const navigate = useNavigate()
+
+    const {vehicles} =useAppContext()
 
   return (
     <motion.div 
@@ -33,7 +36,7 @@ const FeaturedSection = () => {
       
       className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-18'>
         {
-          dummyCarData.slice(0,6).map((vehicle)=> (
+          dummyCarData.slice(0,6).map((vehicle)=> (       //here,  we have to write vehilces in the place of dummyCarData 
             <motion.div 
             initial={{scale: 0.95, opacity: 0}}
             animate={{scale: 1, opacity: 1}}

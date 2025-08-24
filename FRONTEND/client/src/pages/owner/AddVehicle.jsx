@@ -23,13 +23,13 @@ const AddVehicle = () => {
     const [isLoading, setIsLoading] = useState(false)
 
     const onSubmitHandler = async (e) => {
-  e.preventDefault();
-  if (isLoading) return;
+    e.preventDefault()
+    if (isLoading) return;
 
-  setIsLoading(true);
-  try {
-    const formData = new FormData();
-    if (image) formData.append('image', image);
+    setIsLoading(true)
+    try {
+      const formData = new FormData()
+      if(image) formData.append('image', image)
 
     // append each field so req.body has them directly
     const payload = {
@@ -41,7 +41,7 @@ const AddVehicle = () => {
       location: vehicle.location,
       description: vehicle.description.trim(),
     };
-    Object.entries(payload).forEach(([k, v]) => formData.append(k, v));
+    Object.entries(payload).forEach(([k, v]) => formData.append(k, v), JSON.stringify(vehicle));
 
     await axios.post('/api/owner/add-vehicle', formData, {
       headers: { 'Content-Type': 'multipart/form-data' },
