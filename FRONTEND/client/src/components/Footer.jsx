@@ -2,6 +2,7 @@ import React from 'react'
 import { assets } from '../assets/assets'
 import { motion } from 'motion/react'
 
+
 const Footer = () => {
   return (
     <motion.div 
@@ -54,10 +55,10 @@ const Footer = () => {
                     <div>
                     <h2 className='text-base font-medium text-gray-800 uppercase'>Quick Links</h2>
                     <ul className='mt-3 flex flex-col gap-1.5'>
-                        <li><a href="#">Home</a></li>
+                        <li><a href="/">Home</a></li>
                         <li><a href="/vehicles">Browse Vehicles</a></li>
                         <li><a href="#">List your Vehicles</a></li>
-                        <li><a href="#">About Us</a></li>
+                        <li><a href="/about-us">About Us</a></li>
                     </ul>
                 </div>
 
@@ -75,10 +76,10 @@ const Footer = () => {
                 <div>
                     <h2 className='text-base font-medium text-gray-800 uppercase'>Contact Us</h2>
                     <ul className='mt-3 flex flex-col gap-1.5'>
-                        <li>1234 Luxury drive</li>
-                        <li>San Francisco,CA 94107</li>
-                        <li>+1 234 567890</li>               {/*need one address for our branch*/}
-                        <li>info@example.com</li>
+                        <li>RideIntelliX</li>
+                        <li>3rd Floor, Innov8 Business Hub,</li>
+                        <li>MG Road, Bengaluru – 560001, Karnataka, India</li>               {/*need one address for our branch*/}
+                        <li>rideintelliX71@gmail.com</li>
                     </ul>
                 </div>
 

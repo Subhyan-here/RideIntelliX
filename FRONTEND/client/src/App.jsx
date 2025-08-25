@@ -14,6 +14,7 @@ import ManageBookings from './pages/owner/ManageBookings'
 import Login from './components/Login'
 import { Toaster } from 'react-hot-toast'
 import { useAppContext } from './context/AppContext'
+import AboutPage from './pages/AboutPage'
 
 
 const App = () => {
@@ -33,6 +34,7 @@ const isOwnerpath = useLocation().pathname.startsWith('/owner')
         <Route path='/vehicle-details/:id' element={<VehicleDetails/>}/>
         <Route path='/vehicles' element={<Vehicles/>}/>
         <Route path='/my-bookings' element={<MyBookings/>}/>
+        <Route path='/about-us' element={<AboutPage/>}/>
         <Route path='/owner' element={<Layout />}>
           <Route index element={<Dashboard/>}/>
           <Route path="add-vehicle" element={<AddVehicle/>}/>

@@ -49,6 +49,7 @@ import car_image9 from "./car_image9.png"
 import car_image10 from "./car_image10.png"
 import car_image11 from "./car_image11.png"
 import car_image12 from "./car_image12.png"
+import about from "./about.jpg"
 
 export const cityList = ['Delhi', 'Mumbai', 'Chennai', 'Kolkata', 'Hydrabad']
 
@@ -104,12 +105,14 @@ export const assets = {
     car_image10,
     car_image11,
     car_image12,
+    about,
 }
 
 export const menuLinks = [
     { name: "Home", path: "/" },
     { name: "Vehicles", path: "/vehicles" },
     { name: "My Bookings", path: "/my-bookings" },
+    {name: "About Us", path: "/about-us"},
 ]
 
 export const ownerMenuLinks = [
