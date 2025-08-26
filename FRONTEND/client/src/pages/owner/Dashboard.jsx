@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { assets} from '../../assets/assets'
+import { assets, dummyDashboardData } from '../../assets/assets'
 import Title from '../../components/owner/Title'
 import { useAppContext } from '../../context/AppContext'
 import toast from 'react-hot-toast'
@@ -25,16 +25,17 @@ const Dashboard = () => {
     ]
 
     const fetchDashboardData = async() =>{
-        try {
-            const {data} = await axios.get('/api/owner/dashboard')
-            if(data.success){
-                setData(data.dashboardData)
-            }else{
-               toast.error(data.message) 
-            }
-        } catch (error) {
-            toast.error(error.message)
-        }
+        setData(dummyDashboardData)
+        // try {
+        //     const {data} = await axios.get('/api/owner/dashboard')
+        //     if(data.success){
+        //         setData(data.dashboardData)
+        //     }else{
+        //        toast.error(data.message) 
+        //     }
+        // } catch (error) {
+        //     toast.error(error.message)
+        // }
     }
 
     useEffect(()=>{

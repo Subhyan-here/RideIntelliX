@@ -11,16 +11,17 @@ const ManageVehicles = () => {
   const [vehicles,setVehicles] = useState([])
 
   const fetchOwnervehicles = async ()=>{
-    try {
-      const {data} = await axios.get('/api/owner/vehicles')
-      if(data.success){
-        setVehicles(data.vehicles)
-      }else{
-        toast.error(data.message)
-      }
-    } catch (error) {
-      toast.error(error.message)
-    }
+    setVehicles(dummyCarData)
+    // try {
+    //   const {data} = await axios.get('/api/owner/vehicles')
+    //   if(data.success){
+    //     setVehicles(data.vehicles)
+    //   }else{
+    //     toast.error(data.message)
+    //   }
+    // } catch (error) {
+    //   toast.error(error.message)
+    // }
   }
 
     const toggleAvailability = async (vehicleId)=>{
