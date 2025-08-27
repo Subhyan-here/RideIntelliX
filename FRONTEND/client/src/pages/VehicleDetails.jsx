@@ -22,7 +22,7 @@ const VehicleDetails = () => {
   const handleSubmit = async (e)=>{
     e.preventDefault();
     try {
-      const {data} = await axios.post('/api/bookings/create', {
+      const {data} = await axios.post('/api/bookings/verify', {
         vehicle: id,
         pickupDate,
         returnDate
@@ -30,7 +30,7 @@ const VehicleDetails = () => {
 
       if (data.success){
         toast.success(data.message)
-        navigate('/my-bookings')
+        navigate('/get-bookings')
       }else{
         toast.error(data.message)
       }
@@ -153,7 +153,7 @@ const VehicleDetails = () => {
 
           <button className='w-full bg-primary hover:bg-primary-dull
           transition-all py-3 font-medium text-white rounded-x1 
-          cursor-pointer'>Book Now</button>
+          cursor-pointer' onClick={'/verify'}>Book Now</button>
 
           <p className='text-center text-sm'>No credit card required to reserve</p>
 

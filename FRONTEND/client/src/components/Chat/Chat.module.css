@@ -1,0 +1,38 @@
+.Chat {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 15px;
+  background: #e6f7ff;
+  border-radius: 12px;
+  min-height: 400px;
+  max-height: 70vh;
+  overflow-y: auto;
+}
+
+.Message {
+  max-width: 70%;
+  padding: 10px 14px;
+  border-radius: 15px;
+  word-wrap: break-word;
+  font-size: 15px;
+  line-height: 1.4;
+}
+
+.Message[data-role="assistant"] {
+  background: #d1f7d6;
+  align-self: flex-start;
+}
+
+.Message[data-role="user"] {
+  background: #daf0ff;
+  align-self: flex-end;
+}
+
+.Message[data-role="system"] {
+  background: #ffe6e6;
+  align-self: center;
+  font-style: italic;
+  font-size: 14px;
+  color: #555;
+}

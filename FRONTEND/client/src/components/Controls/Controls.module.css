@@ -1,0 +1,47 @@
+.Controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  border-top: 1px solid #ddd;
+  margin-top: 10px;
+}
+
+.TextAreaContainer {
+  flex: 1;
+}
+
+.TextArea {
+  width: 100%;
+  min-height: 50px;
+  resize: none;
+  padding: 10px;
+  font-size: 15px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  outline: none;
+}
+
+.TextArea:disabled {
+  background: #f5f5f5;
+}
+
+.Button {
+  background: #0078ff;
+  border: none;
+  border-radius: 50%;
+  padding: 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.Button:disabled {
+  background: #aaa;
+  cursor: not-allowed;
+}
+
+.Button svg {
+  fill: white;
+}

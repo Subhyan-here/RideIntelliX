@@ -1,5 +1,6 @@
 import Booking from "../models/booking.js"
 import Vehicle from "../models/vehicle.js";
+import Razorpay from "razorpay";
 
 
 //Function to check availability of vehicles for a given Date
@@ -120,4 +121,51 @@ export const changeBookingStatus = async (req,res)=>{
         console.log(error.message);
         res.json({success: false, message:error.message})
     }
+}
+
+        {/*CHANGES APPLIED*/}
+//create booking & payment order
+    export const bookVehicle = async(req,res)=>{
+
+    try {
+        const {vehicle,vehicleId,user,price} = req.body;
+
+        //create razorpay order
+        const options = {
+            price:amount*100,
+            currency:'INR',
+            receipt:`recipt_order_${Date.now()}`
+        };
+
+        const order = await Razorpay.orders.create(options);
+
+        const booking = await Booking.create({user,vehicleId,price,status: 'Pending'});
+        res.status(201).json({booking,order});
+
+
+    }catch(err){
+        res.status(401).json({error:err.message});
+    }
+
+    };
+
+//update payment status
+
+export const verifyPayment = async(req,res)=>{
+
+   try {
+    const {vehicleId} = req.body;
+    await Booking.findByIdAndUpdate(vehicleId,{paymentStatus:'Paid'});
+    res.status(200).json({message:'Payment verified and updated'});
+   } catch(err){
+     res.status(401).json({error:err.message});
+   }
+}
+
+
+//get all booking
+
+export const getAllbookings = async(req,res)=>{
+    const bookings = await Booking.find().populate('vehicleId');
+    res.status(200).json(bookings);
 }

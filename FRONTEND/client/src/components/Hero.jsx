@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import { assets, cityList } from '../assets/assets'
-
 import {motion} from 'motion/react'
 import { useAppContext } from '../context/AppContext'
+import Chatboat from './Chatboat'
 
 const Hero = () => {
 
@@ -65,7 +65,7 @@ const Hero = () => {
         whileHover={{scale: 1.05}}
         whileTap={{scale: 0.95}}
         className='flex items-center justify-center gap-1 px-9 py-3
-        max-sm:mt-4 bg-primary hopver:bg-primary-dull text-white rounded-full
+        max-sm:mt-4 bg-primary hover:bg-primary-dull text-white rounded-full
         cursor-pointer'>
             <img src={assets.search_icon} alt="search"
             className='brightness-300'/>
@@ -74,12 +74,25 @@ const Hero = () => {
 
 </motion.form>
 
+    <div className="flex justify-center">
+         {/* Bike Image Section */}
     <motion.img 
     initial={{y: 100, opacity: 0}}
     animate={{y: 0, opacity: 1}}
     transition={{duration: 0.8, delay: 0.6}}
     src={assets.main_car} alt="car" className='max-h-74'/>
+    </div>
+
+    {/* Chatbot floating in bottom-right corner */}
+        <motion.div 
+        initial={{y: 100, opacity: 0}}
+        animate={{y: 0, opacity: 1}}
+        transition={{duration: 0.8, delay: 0.8}}
+        className="absolute bottom-5 left-290 w-1/4 rounded-xl">
+            <Chatboat />
+        </motion.div>
     </motion.div>
+
   )
 }
 
