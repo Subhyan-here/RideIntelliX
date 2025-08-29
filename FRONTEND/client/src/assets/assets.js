@@ -51,7 +51,7 @@ import car_image11 from "./car_image11.png"
 import car_image12 from "./car_image12.png"
 import about from "./about.jpg"
 
-export const cityList = ['Delhi', 'Mumbai', 'Chennai', 'Kolkata', 'Hydrabad']
+export const cityList = ['Delhi', 'Mumbai', 'Chennai', 'Kolkata', 'Hydrabad','Pune','Bhopal','Bihar','Goa','Sikkim','Bangalore']
 
 export const assets = {
     logo,
